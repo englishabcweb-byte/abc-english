@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150'%3E%3Cpath d='M20 0h110a20 20 0 0 1 20 20v80a20 20 0 0 1-20 20H70l-34 30v-30H20A20 20 0 0 1 0 100V20A20 20 0 0 1 20 0z' fill='%23F0709A'/%3E%3Ctext x='75' y='88' text-anchor='middle' font-family='Arial' font-weight='800' font-size='76' fill='%23fff'%3EA%3C/text%3E%3C/svg%3E">
+    <title>ABC English | From Basics to Fluency</title>
+
+    <style>
+        :root {
+            --primary: #3a2e39;          /* Soft deep plum/slate */
+            --secondary: #524150;        
+            --accent: #f7a8b8;           /* Pink color */
+            --accent-hover: #e88d9f;     /* Slightly deeper pink for hover */
+            --text-light: #ffffff;
+            --text-dark: #2d242c;
+            --bg-light: #faf7f5;         /* Warm cream background */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #ffffff;
+            color: var(--text-dark);
+            padding: 0.9rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+        .logo-name { font-size: 1.75rem; font-weight: 800; }
+        .logo-name span { color: var(--accent-hover); font-weight: 700; }
+        .logo-tagline {
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #8a7a82;
+            margin-top: 0.2rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            margin-inline-start: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(250, 247, 245, 0.85), rgba(247, 168, 184, 0.45)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: var(--text-dark);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #524150;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #ffffff;
+            padding: 0.75rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(247, 168, 184, 0.4);
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--primary);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            text-align: center;
+            border-top: 4px solid var(--accent);
+        }
+
+        #programs .grid, #pricing .grid { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 700px) { #programs .grid, #pricing .grid { grid-template-columns: 1fr; } }
+
+        /* ---------- Book Club reading list ---------- */
+        .book-intro { text-align: center; max-width: 650px; margin: -1.5rem auto 3rem; }
+        .book-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .book-card { background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border-top: 4px solid var(--accent); overflow: hidden; display: flex; flex-direction: column; }
+        .book-info { padding: 2rem 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.35rem; }
+        .book-month { color: var(--accent-hover); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; }
+        .book-info h3 { color: var(--primary); font-size: 1.3rem; }
+        .book-author { font-style: italic; color: var(--secondary); }
+        .book-schedule { font-size: 0.95rem; margin-top: 0.5rem; }
+        .book-status { margin-top: 0.75rem; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+        .status-upcoming { background: #fff0f3; color: var(--primary); }
+        .status-reading { background: var(--accent-hover); color: #fff; }
+        .status-done { background: #e8e4e7; color: var(--secondary); }
+        @media (max-width: 900px) { .book-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .book-grid { grid-template-columns: 1fr; } .book-card { max-width: 340px; margin: 0 auto; } }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.35rem;
+            color: var(--primary);
+        }
+
+        .about-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-photo { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 4px solid var(--accent); box-shadow: 0 4px 15px rgba(247,168,184,0.35); }
+        .about-text h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .badge-list {
+            margin: 1.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            background-color: #fff0f3;
+            color: var(--primary);
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--accent);
+        }
+
+        .price-card {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid #f0e6e8;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-card.featured {
+            border: 2px solid var(--accent);
+        }
+
+        .price-card .badge-popular {
+            position: absolute;
+            top: 1rem;
+            inset-inline-end: 1rem;
+            background-color: var(--accent);
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 1.5rem 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #7a6877;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: start;
+        }
+
+        .price-features li {
+            margin-bottom: 0.75rem;
+            padding-inline-start: 1.5rem;
+            position: relative;
+        }
+
+        .price-features li::before {
+            content: '✓';
+            color: var(--accent-hover);
+            position: absolute;
+            inset-inline-start: 0;
+            font-weight: bold;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.25rem;
+            background: #fff;
+            width: 100%;
+            text-align: start;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--accent-hover);
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+        }
+
+        .faq-answer {
+            padding: 0 1.25rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #524150;
+            background: #fff9fa;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 1.25rem;
+            max-height: 200px;
+        }
+
+        form {
+            background: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ebdada;
+            border-radius: 6px;
+            font-size: 1rem;
+            background-color: #fff9fa;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(247, 168, 184, 0.3);
+        }
+
+        footer {
+            background-color: #ffffff;
+            color: var(--text-dark);
+            text-align: center;
+            padding: 2.5rem 2rem;
+            margin-top: 5rem;
+            font-size: 0.9rem;
+            border-top: 1px solid #f0e6e8;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.25rem; }
+            .about-box { flex-direction: column; text-align: center; padding: 2rem; }
+            .about-photo { width: 180px; height: 180px; }
+            .nav-container { flex-direction: column; gap: 1rem; }
+            nav a { margin: 0 0.75rem; }
+            form { padding: 1.5rem; }
+        }
+
+        /* ---------- Language switcher & RTL ---------- */
+        nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; row-gap: 0.5rem; }
+        .logo { direction: ltr; }
+        .lang-switch { display: inline-flex; gap: 0.15rem; margin-inline-start: 1rem; }
+        .lang-switch button { border: 1px solid var(--accent); background: #fff; color: var(--primary); padding: 0.05rem 0.35rem; border-radius: 8px; font-weight: 600; font-size: 0.62rem; line-height: 1.5; cursor: pointer; font-family: inherit; }
+        .lang-switch button.active { background: var(--accent-hover); border-color: var(--accent-hover); color: #fff; }
+        html[lang="ar"] body, html[lang="ar"] button, html[lang="ar"] input, html[lang="ar"] select, html[lang="ar"] textarea { font-family: "Segoe UI", Tahoma, "Noto Naskh Arabic", Arial, sans-serif; }
+        html[lang="ar"] .logo-tagline, html[lang="ar"] .book-month { letter-spacing: 0; text-transform: none; }
+        html[lang="ar"] .logo-tagline { direction: rtl; }
+        @media (max-width: 768px) { .lang-switch { margin-inline-start: 0.5rem; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo" aria-label="ABC English home">
+                <svg class="logo-icon" viewBox="0 0 150 150" width="46" height="46" aria-hidden="true">
+                    <defs><linearGradient id="logoPink" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB3C9"/><stop offset="1" stop-color="#F0709A"/></linearGradient></defs>
+                    <path d="M20 0h110a20 20 0 0 1 20 20v80a20 20 0 0 1-20 20H70l-34 30v-30H20A20 20 0 0 1 0 100V20A20 20 0 0 1 20 0z" fill="url(#logoPink)"/>
+                    <text x="75" y="88" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="800" font-size="76" fill="#fff">A</text>
+                    <circle cx="132" cy="22" r="7" fill="#fff" opacity=".85"/>
+                </svg>
+                <span class="logo-text">
+                    <span class="logo-name">ABC <span>English</span></span>
+                    <small class="logo-tagline" data-i18n="tagline">From Basics to Fluency</small>
+                </span>
+            </a>
+            <nav>
+                <a href="#programs" data-i18n="nav_programs">Programs</a>
+                <a href="#about" data-i18n="nav_about">About</a>
+                <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+                <a href="#book-club" data-i18n="nav_reading">Book Club</a>
+                <a href="#faq" data-i18n="nav_faq">FAQ</a>
+                <a href="#contact" data-i18n="nav_trial">Enroll Now</a>
+                <div class="lang-switch" role="group" aria-label="Langue / Language / اللغة">
+                    <button type="button" data-lang="en" class="active">EN</button>
+                    <button type="button" data-lang="fr">FR</button>
+                    <button type="button" data-lang="ar" lang="ar">عربية</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-i18n="hero_h1">Master English with Confidence</h1>
+            <p data-i18n="hero_p">Tailored online interactive lessons for ambitious professionals and students.</p>
+            <a href="#contact" class="btn" data-i18n="consult">Book a Free Consultation</a>
+        </div>
+    </section>
+
+    <section id="programs">
+        <h2 class="section-title" data-i18n="prog_title">Our Learning Programs</h2>
+        <div class="grid">
+            <div class="card">
+                <h3 data-i18n="prog_biz">Business English</h3>
+                <p data-i18n="prog_biz_p">Advance your career, ace interviews, and lead meetings confidently with specific professional communication coaching.</p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="prog_conv">Conversational Fluency</h3>
+                <p data-i18n="prog_conv_p">Speak naturally and clearly. Overcome your public speaking fear through dynamic, real-world conversational practices.</p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="prog_exam">School Exam Prep (Baccalauréat)</h3>
+                <p data-i18n="prog_exam_p">Targeted curriculum alignment focusing on literature grammar, essay structures, and key skills to ace regular state school exams.</p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="bookclub">Book Club</h3>
+                <p data-i18n="prog_book_p">Read, discuss, and grow together. Build vocabulary, comprehension, and speaking confidence through engaging English books and friendly group conversations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="background-color: #fff; max-width: 100%;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <h2 class="section-title" data-i18n="about_title">Meet Your Instructor</h2>
+            <div class="about-box">
+                <img class="about-photo" src="data:image/jpeg;base64,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" alt="Your English coach" width="220" height="220">
+                <div class="about-text">
+                    <h3 data-i18n="about_h3">Hello, I am your lead English coach!</h3>
+                    <p data-i18n="about_p1">I hold a Master's Degree in English Literature from the Faculty of Arts in Sousse. My teaching background balances formal structure with communicative versatility, ensuring you achieve both your academic grades and your career milestones.</p>
+                    
+                    <div class="badge-list">
+                        <span class="badge" data-i18n="badge1">MA in English Literature (Sousse)</span>
+                        <span class="badge" data-i18n="badge2">2 Years Presentiel/Classroom Experience</span>
+                        <span class="badge" data-i18n="badge3">3 Years Online Freelance Coach</span>
+                    </div>
+                    
+                    <p data-i18n="about_p2">Whether you need to polish a corporate presentation or secure a top mark on your Baccalauréat exam, I create personalized roadmaps built around your exact level.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <h2 class="section-title" data-i18n="price_title">Simple, Affordable Pricing</h2>
+        <div class="grid" style="max-width: 1100px; margin: 0 auto;">
+            <!-- Book Club -->
+            <div class="price-card">
+                <div>
+                    <h3 data-i18n="bookclub">Book Club</h3>
+                    <p data-i18n="book_short">Read, discuss, and grow together</p>
+                    <div class="price">20 <span data-i18n="per_month">TND / month</span></div>
+                    <ul class="price-features">
+                        <li data-i18n="bf1">Engaging English books to read</li>
+                        <li data-i18n="bf2">Group discussions & speaking practice</li>
+                        <li data-i18n="bf3">Vocabulary & comprehension activities</li>
+                        <li data-i18n="bf4">Friendly, supportive community</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="btn" style="width: 100%; text-align: center;" data-i18n="enroll">Enroll Now</a>
+            </div>
+
+            <!-- Student Plan -->
+            <div class="price-card">
+                <div>
+                    <h3 data-i18n="student">Student Plan</h3>
+                    <p data-i18n="student_p">Perfect for Baccalauréat & regular school prep</p>
+                    <div class="price">40 <span data-i18n="per_month">TND / month</span></div>
+                    <ul class="price-features">
+                        <li data-i18n="sf1">School curriculum alignment</li>
+                        <li data-i18n="sf2">Grammar & essay writing reviews</li>
+                        <li data-i18n="sf3">Weekly interactive exercises</li>
+                        <li data-i18n="sf4">Exam day practice tracking</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="btn" style="width: 100%; text-align: center;" data-i18n="enroll">Enroll Now</a>
+            </div>
+
+            <!-- Conversational Fluency Plan -->
+            <div class="price-card">
+                <div>
+                    <h3 data-i18n="conv">Conversational Plan</h3>
+                    <p data-i18n="conv_p">Build everyday speaking confidence</p>
+                    <div class="price">80 <span data-i18n="per_month">TND / month</span></div>
+                    <ul class="price-features">
+                        <li data-i18n="cf1">Real-world topics & debate</li>
+                        <li data-i18n="cf2">Pronunciation & accent refinement</li>
+                        <li data-i18n="cf3">Vocabulary expansion exercises</li>
+                        <li data-i18n="cf4">Live 1-on-1 speaking practice</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="btn" style="width: 100%; text-align: center;" data-i18n="enroll">Enroll Now</a>
+            </div>
+
+            <!-- Professional Plan -->
+            <div class="price-card featured">
+                <div class="badge-popular" data-i18n="pro_badge">Professional Choice</div>
+                <div>
+                    <h3 data-i18n="pro">Professional Plan</h3>
+                    <p data-i18n="pro_p">For career advancement & business fluency</p>
+                    <div class="price">100 <span data-i18n="per_month">TND / month</span></div>
+                    <ul class="price-features">
+                        <li data-i18n="pf1">Business terminology & jargon</li>
+                        <li data-i18n="pf2">Mock job interviews & meetings</li>
+                        <li data-i18n="pf3">Flexible scheduling templates</li>
+                        <li data-i18n="pf4">Advanced pronunciation fixing</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="btn" style="width: 100%; text-align: center;" data-i18n="enroll">Enroll Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="book-club">
+        <h2 class="section-title" data-i18n="bc_title">Book Club Reading Projects</h2>
+        <p class="book-intro" data-i18n="bc_intro">Our Book Club runs from December through May, with members gathering on the last Friday of each month to discuss the selected book and share their thoughts and insights.</p>
+        <div class="book-grid">
+
+            <!-- ===== December: The Railway Children (copy this whole block to add a new book) ===== -->
+            <article class="book-card">
+                <div class="book-info">
+                    <span class="book-month" data-i18n="m_dec">December</span>
+                    <h3>The Railway Children</h3>
+                    <p class="book-author"><span data-i18n="by">by</span> E. Nesbit</p>
+                    <p class="book-schedule" data-i18n="d_dec">Discussion: Friday, December 25</p>
+                    <span class="book-status status-upcoming" data-i18n="upcoming">Coming up</span>
+                </div>
+            </article>
+
+            <!-- ===== January: Treasure Island (copy this whole block to add a new book) ===== -->
+            <article class="book-card">
+                <div class="book-info">
+                    <span class="book-month" data-i18n="m_jan">January</span>
+                    <h3>Treasure Island</h3>
+                    <p class="book-author"><span data-i18n="by">by</span> Robert Louis Stevenson</p>
+                    <p class="book-schedule" data-i18n="d_jan">Discussion: Friday, January 29</p>
+                    <span class="book-status status-upcoming" data-i18n="upcoming">Coming up</span>
+                </div>
+            </article>
+
+            <!-- ===== February: The Old Curiosity Shop (copy this whole block to add a new book) ===== -->
+            <article class="book-card">
+                <div class="book-info">
+                    <span class="book-month" data-i18n="m_feb">February</span>
+                    <h3>The Old Curiosity Shop</h3>
+                    <p class="book-author"><span data-i18n="by">by</span> Charles Dickens</p>
+                    <p class="book-schedule" data-i18n="d_feb">Discussion: Friday, February 26</p>
+                    <span class="book-status status-upcoming" data-i18n="upcoming">Coming up</span>
+                </div>
+            </article>
+
+            <!-- ===== March: Anne of Green Gables (copy this whole block to add a new book) ===== -->
+            <article class="book-card">
+                <div class="book-info">
+                    <span class="book-month" data-i18n="m_mar">March</span>
+                    <h3>Anne of Green Gables</h3>
+                    <p class="book-author"><span data-i18n="by">by</span> L. M. Montgomery</p>
+                    <p class="book-schedule" data-i18n="d_mar">Discussion: Friday, March 26</p>
+                    <span class="book-status status-upcoming" data-i18n="upcoming">Coming up</span>
+                </div>
+            </article>
+
+            <!-- ===== April: What Katy Did Next (copy this whole block to add a new book) ===== -->
+            <article class="book-card">
+                <div class="book-info">
+                    <span class="book-month" data-i18n="m_apr">April</span>
+                    <h3>What Katy Did Next</h3>
+                    <p class="book-author"><span data-i18n="by">by</span> Susan Coolidge</p>
+                    <p class="book-schedule" data-i18n="d_apr">Discussion: Friday, April 30</p>
+                    <span class="book-status status-upcoming" data-i18n="upcoming">Coming up</span>
+                </div>
+            </article>
+
+            <!-- ===== May: Little Women (copy this whole block to add a new book) ===== -->
+            <article class="book-card">
+                <div class="book-info">
+                    <span class="book-month" data-i18n="m_may">May</span>
+                    <h3>Little Women</h3>
+                    <p class="book-author"><span data-i18n="by">by</span> Deanna McFadden</p>
+                    <p class="book-schedule" data-i18n="d_may">Discussion: Friday, May 28</p>
+                    <span class="book-status status-upcoming" data-i18n="upcoming">Coming up</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="faq">
+        <h2 class="section-title" data-i18n="faq_title">Frequently Asked Questions</h2>
+        <div style="max-width: 700px; margin: 0 auto;">
+            <div class="faq-item">
+                <button class="faq-question" data-i18n="q1">How are online classes conducted?</button>
+                <div class="faq-answer">
+                    <p data-i18n="a1">Classes take place via live, interactive video tools (like Google Meet or Zoom). You will receive a direct access link prior to each scheduled lesson session.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" data-i18n="q2">What local payment methods do you accept?</button>
+                <div class="faq-answer">
+                    <p data-i18n="a2">We accept common local Tunisian options including D17 application transfers, direct bank account wire transfers, or physical cash deposit methods.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" data-i18n="q3">Do you provide real homework materials for the Baccalauréat?</button>
+                <div class="faq-answer">
+                    <p data-i18n="a3">Yes. All students in the Exam Prep track receive specific grammar guides, structured text analyses, and past exam templates aligned with national testing frameworks.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" data-i18n="q4">Can I reschedule a session if I am busy?</button>
+                <div class="faq-answer">
+                    <p data-i18n="a4">Absolutely. If you notify us at least 48 hours in advance, we can easily find an alternative slot inside the monthly calendar schedule.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title" data-i18n="enroll_title">Enroll Now</h2>
+        <form id="applyForm" action="https://formsubmit.co/englishabcweb@gmail.com" method="POST">
+            <!-- FormSubmit settings -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="New ABC English application">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="Site Language" id="siteLang" value="English">
+
+            <div class="form-group">
+                <label for="name" data-i18n="l_name">Your Name</label>
+                <input type="text" id="name" name="Student Name" required placeholder="Adam Bc">
+            </div>
+
+            <div class="form-group">
+                <label for="email" data-i18n="l_email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="adam@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="phone" data-i18n="l_phone">Phone Number</label>
+                <input type="tel" id="phone" name="Phone Number" required placeholder="+216 55 123 456">
+            </div>
+
+            <div class="form-group">
+                <label for="plan" data-i18n="l_plan">Select Your Plan / Focus</label>
+                <select id="plan" name="Selected Plan" required>
+                    <option value="" disabled selected data-i18n="o_choose">Choose an option</option>
+                    <option value="Book Club (20 TND/mo)" data-i18n="o_book">Book Club (20 TND/mo)</option>
+                    <option value="Student Plan (40 TND/mo) - Baccalauréat Focus" data-i18n="o_student">Student Plan (40 TND/mo) - Baccalauréat Focus</option>
+                    <option value="Conversational Plan (80 TND/mo) - Fluency Focus" data-i18n="o_conv">Conversational Plan (80 TND/mo) - Fluency Focus</option>
+                    <option value="Professional Plan (100 TND/mo) - Career Focus" data-i18n="o_pro">Professional Plan (100 TND/mo) - Career Focus</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message" data-i18n="l_msg">Tell me about your English language goals</label>
+                <textarea id="message" name="Language Goals" rows="4" data-i18n-ph="ph_msg" placeholder="I need help passing my exam / preparing for interviews..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn" id="submitBtn" data-i18n="submit">Submit Request</button>
+            <p id="formStatus" role="status" style="margin-top:1rem;font-weight:600;"></p>
+        </form>
+        <script>
+            document.getElementById('applyForm').addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const form = this, btn = document.getElementById('submitBtn'), status = document.getElementById('formStatus');
+                btn.disabled = true; btn.textContent = tr('sending'); status.textContent = '';
+                try {
+                    const res = await fetch('https://formsubmit.co/ajax/englishabcweb@gmail.com', {
+                        method: 'POST',
+                        headers: { 'Accept': 'application/json' },
+                        body: new FormData(form)
+                    });
+                    if (!res.ok) throw new Error('Request failed');
+                    form.reset(); if (window.syncSiteLang) window.syncSiteLang();
+                    status.style.color = '#2e7d4f';
+                    status.textContent = tr('success');
+                } catch (err) {
+                    status.style.color = '#c0392b';
+                    status.textContent = tr('error');
+                }
+                btn.disabled = false; btn.textContent = tr('submit');
+            });
+        </script>
+
+    </section>
+
+    <footer>
+        <div class="institution-contact" style="padding: 10px 0; text-align: center; font-family: sans-serif; margin-bottom: 10px;">
+            <span style="margin-inline-end: 20px;">📞 <strong data-i18n="f_phone">Phone:</strong> <a dir="ltr" href="tel:+21694130305" style="color: var(--accent-hover); text-decoration: none;">+216 94 130 305</a></span>
+            <span style="margin-inline-end: 20px;">✉️ <strong data-i18n="f_email">Email:</strong> <a dir="ltr" href="mailto:englishabcweb@gmail.com" style="color: var(--accent-hover); text-decoration: none;">englishabcweb@gmail.com</a></span>
+            <span>📸 <strong data-i18n="f_insta">Instagram:</strong> <a href="https://www.instagram.com/abc_english101?stkn=MXRmODE4YWlndmJ4MA==" target="_blank" style="color: var(--accent-hover); text-decoration: none;" data-i18n="f_visit">Visit Our Profile</a></span>
+        </div>
+        <p data-i18n="copyright">&copy; 2026 ABC English. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+                
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        const I18N = {
+ "en": {
+  "nav_programs": "Programs",
+  "nav_about": "About",
+  "nav_pricing": "Pricing",
+  "nav_reading": "Book Club",
+  "nav_faq": "FAQ",
+  "nav_trial": "Enroll Now",
+  "tagline": "From Basics to Fluency",
+  "hero_h1": "Master English with Confidence",
+  "hero_p": "Tailored online interactive lessons for ambitious professionals and students.",
+  "consult": "Book a Free Consultation",
+  "enroll_title": "Enroll Now",
+  "prog_title": "Our Learning Programs",
+  "prog_biz": "Business English",
+  "prog_biz_p": "Advance your career, ace interviews, and lead meetings confidently with specific professional communication coaching.",
+  "prog_conv": "Conversational Fluency",
+  "prog_conv_p": "Speak naturally and clearly. Overcome your public speaking fear through dynamic, real-world conversational practices.",
+  "prog_exam": "School Exam Prep (Baccalauréat)",
+  "prog_exam_p": "Targeted curriculum alignment focusing on literature grammar, essay structures, and key skills to ace regular state school exams.",
+  "bookclub": "Book Club",
+  "prog_book_p": "Read, discuss, and grow together. Build vocabulary, comprehension, and speaking confidence through engaging English books and friendly group conversations.",
+  "about_title": "Meet Your Instructor",
+  "about_h3": "Hello, I am your lead English coach!",
+  "about_p1": "I hold a Master's Degree in English Literature from the Faculty of Arts in Sousse. My teaching background balances formal structure with communicative versatility, ensuring you achieve both your academic grades and your career milestones.",
+  "badge1": "MA in English Literature (Sousse)",
+  "badge2": "2 Years Presentiel/Classroom Experience",
+  "badge3": "3 Years Online Freelance Coach",
+  "about_p2": "Whether you need to polish a corporate presentation or secure a top mark on your Baccalauréat exam, I create personalized roadmaps built around your exact level.",
+  "price_title": "Simple, Affordable Pricing",
+  "book_short": "Read, discuss, and grow together",
+  "per_month": "TND / month",
+  "bf1": "Engaging English books to read",
+  "bf2": "Group discussions & speaking practice",
+  "bf3": "Vocabulary & comprehension activities",
+  "bf4": "Friendly, supportive community",
+  "enroll": "Enroll Now",
+  "student": "Student Plan",
+  "student_p": "Perfect for Baccalauréat & regular school prep",
+  "sf1": "School curriculum alignment",
+  "sf2": "Grammar & essay writing reviews",
+  "sf3": "Weekly interactive exercises",
+  "sf4": "Exam day practice tracking",
+  "conv": "Conversational Plan",
+  "conv_p": "Build everyday speaking confidence",
+  "cf1": "Real-world topics & debate",
+  "cf2": "Pronunciation & accent refinement",
+  "cf3": "Vocabulary expansion exercises",
+  "cf4": "Live 1-on-1 speaking practice",
+  "pro": "Professional Plan",
+  "pro_p": "For career advancement & business fluency",
+  "pf1": "Business terminology & jargon",
+  "pf2": "Mock job interviews & meetings",
+  "pf3": "Flexible scheduling templates",
+  "pf4": "Advanced pronunciation fixing",
+  "pro_badge": "Professional Choice",
+  "bc_title": "Book Club Reading Projects",
+  "bc_intro": "Our Book Club runs from December through May, with members gathering on the last Friday of each month to discuss the selected book and share their thoughts and insights.",
+  "m_dec": "December",
+  "m_jan": "January",
+  "m_feb": "February",
+  "m_mar": "March",
+  "m_apr": "April",
+  "d_dec": "Discussion: Friday, December 25",
+  "d_jan": "Discussion: Friday, January 29",
+  "d_feb": "Discussion: Friday, February 26",
+  "d_mar": "Discussion: Friday, March 26",
+  "d_apr": "Discussion: Friday, April 30",
+  "m_may": "May",
+  "d_may": "Discussion: Friday, May 28",
+  "upcoming": "Coming up",
+  "faq_title": "Frequently Asked Questions",
+  "q1": "How are online classes conducted?",
+  "a1": "Classes take place via live, interactive video tools (like Google Meet or Zoom). You will receive a direct access link prior to each scheduled lesson session.",
+  "q2": "What local payment methods do you accept?",
+  "a2": "We accept common local Tunisian options including D17 application transfers, direct bank account wire transfers, or physical cash deposit methods.",
+  "q3": "Do you provide real homework materials for the Baccalauréat?",
+  "a3": "Yes. All students in the Exam Prep track receive specific grammar guides, structured text analyses, and past exam templates aligned with national testing frameworks.",
+  "q4": "Can I reschedule a session if I am busy?",
+  "a4": "Absolutely. If you notify us at least 48 hours in advance, we can easily find an alternative slot inside the monthly calendar schedule.",
+  "l_name": "Your Name",
+  "l_email": "Email Address",
+  "l_phone": "Phone Number",
+  "l_plan": "Select Your Plan / Focus",
+  "l_msg": "Tell me about your English language goals",
+  "o_choose": "Choose an option",
+  "o_book": "Book Club (20 TND/mo)",
+  "o_student": "Student Plan (40 TND/mo) - Baccalauréat Focus",
+  "o_conv": "Conversational Plan (80 TND/mo) - Fluency Focus",
+  "o_pro": "Professional Plan (100 TND/mo) - Career Focus",
+  "submit": "Submit Request",
+  "f_phone": "Phone:",
+  "f_email": "Email:",
+  "f_insta": "Instagram:",
+  "f_visit": "Visit Our Profile",
+  "copyright": "© 2026 ABC English. All Rights Reserved.",
+  "title": "ABC English | From Basics to Fluency",
+  "by": "by",
+  "ph_msg": "I need help passing my exam / preparing for interviews...",
+  "sending": "Sending...",
+  "success": "Thank you! ABC English will contact you soon.",
+  "error": "Something went wrong. Please email us at englishabcweb@gmail.com or message us on Instagram."
+ },
+ "fr": {
+  "nav_programs": "Programmes",
+  "nav_about": "À propos",
+  "nav_pricing": "Tarifs",
+  "nav_reading": "Club de lecture",
+  "nav_faq": "FAQ",
+  "nav_trial": "S'inscrire",
+  "tagline": "Des bases à l'aisance",
+  "hero_h1": "Maîtrisez l'anglais en toute confiance",
+  "hero_p": "Des cours interactifs en ligne sur mesure pour les professionnels et les étudiants ambitieux.",
+  "consult": "Réserver une consultation gratuite",
+  "enroll_title": "Inscrivez-vous maintenant",
+  "prog_title": "Nos programmes d'apprentissage",
+  "prog_biz": "Anglais des affaires",
+  "prog_biz_p": "Faites avancer votre carrière, réussissez vos entretiens et animez vos réunions en toute confiance grâce à un coaching de communication professionnelle ciblé.",
+  "prog_conv": "Aisance conversationnelle",
+  "prog_conv_p": "Parlez naturellement et clairement. Surmontez la peur de parler en public grâce à des pratiques conversationnelles dynamiques et réalistes.",
+  "prog_exam": "Préparation aux examens scolaires (Baccalauréat)",
+  "prog_exam_p": "Un programme aligné sur les cursus scolaires, axé sur la grammaire, la littérature, la structure des rédactions et les compétences clés pour réussir les examens officiels.",
+  "bookclub": "Club de lecture",
+  "prog_book_p": "Lisez, discutez et progressez ensemble. Enrichissez votre vocabulaire, votre compréhension et votre aisance à l'oral grâce à des livres anglais captivants et des conversations de groupe conviviales.",
+  "about_title": "Faites connaissance avec votre coach",
+  "about_h3": "Bonjour, je suis votre coach d'anglais !",
+  "about_p1": "Je suis titulaire d'un Master en littérature anglaise de la Faculté des Lettres de Sousse. Mon parcours d'enseignement allie rigueur pédagogique et approche communicative, afin que vous atteigniez à la fois vos objectifs scolaires et vos ambitions professionnelles.",
+  "badge1": "Master en littérature anglaise (Sousse)",
+  "badge2": "2 ans d'expérience en présentiel",
+  "badge3": "3 ans de coaching freelance en ligne",
+  "about_p2": "Que vous deviez peaufiner une présentation d'entreprise ou décrocher une excellente note au Baccalauréat, je construis une feuille de route personnalisée adaptée à votre niveau exact.",
+  "price_title": "Des tarifs simples et abordables",
+  "book_short": "Lisez, discutez et progressez ensemble",
+  "per_month": "TND / mois",
+  "bf1": "Des livres anglais captivants à lire",
+  "bf2": "Discussions de groupe et pratique orale",
+  "bf3": "Activités de vocabulaire et de compréhension",
+  "bf4": "Une communauté conviviale et bienveillante",
+  "enroll": "S'inscrire",
+  "student": "Plan Étudiant",
+  "student_p": "Idéal pour le Baccalauréat et la préparation scolaire",
+  "sf1": "Alignement sur le programme scolaire",
+  "sf2": "Corrections de grammaire et de rédaction",
+  "sf3": "Exercices interactifs hebdomadaires",
+  "sf4": "Suivi des entraînements pour le jour de l'examen",
+  "conv": "Plan Conversation",
+  "conv_p": "Gagnez en confiance à l'oral au quotidien",
+  "cf1": "Sujets réels et débats",
+  "cf2": "Perfectionnement de la prononciation et de l'accent",
+  "cf3": "Exercices d'enrichissement du vocabulaire",
+  "cf4": "Pratique orale en direct en tête-à-tête",
+  "pro": "Plan Professionnel",
+  "pro_p": "Pour évoluer professionnellement et maîtriser l'anglais des affaires",
+  "pf1": "Terminologie et jargon des affaires",
+  "pf2": "Simulations d'entretiens et de réunions",
+  "pf3": "Modèles d'horaires flexibles",
+  "pf4": "Correction avancée de la prononciation",
+  "pro_badge": "Choix professionnel",
+  "bc_title": "Projets de lecture du Club de lecture",
+  "bc_intro": "Notre Club de lecture se déroule de décembre à mai. Les membres se retrouvent le dernier vendredi de chaque mois pour discuter du livre choisi et partager leurs impressions et réflexions.",
+  "m_dec": "Décembre",
+  "m_jan": "Janvier",
+  "m_feb": "Février",
+  "m_mar": "Mars",
+  "m_apr": "Avril",
+  "d_dec": "Discussion : vendredi 25 décembre",
+  "d_jan": "Discussion : vendredi 29 janvier",
+  "d_feb": "Discussion : vendredi 26 février",
+  "d_mar": "Discussion : vendredi 26 mars",
+  "d_apr": "Discussion : vendredi 30 avril",
+  "m_may": "Mai",
+  "d_may": "Discussion : vendredi 28 mai",
+  "upcoming": "À venir",
+  "faq_title": "Questions fréquentes",
+  "q1": "Comment se déroulent les cours en ligne ?",
+  "a1": "Les cours ont lieu en direct via des outils de visioconférence interactifs (comme Google Meet ou Zoom). Vous recevrez un lien d'accès direct avant chaque séance.",
+  "q2": "Quels modes de paiement locaux acceptez-vous ?",
+  "a2": "Nous acceptons les moyens de paiement tunisiens courants, notamment les virements via l'application D17, les virements bancaires ou les dépôts d'espèces.",
+  "q3": "Fournissez-vous de vrais documents de travail pour le Baccalauréat ?",
+  "a3": "Oui. Tous les étudiants du programme de préparation aux examens reçoivent des guides de grammaire, des analyses de textes structurées et des modèles d'anciens sujets alignés sur les référentiels nationaux.",
+  "q4": "Puis-je reporter une séance si je suis occupé(e) ?",
+  "a4": "Bien sûr. Si vous nous prévenez au moins 48 heures à l'avance, nous trouverons facilement un autre créneau dans le calendrier mensuel.",
+  "l_name": "Votre nom",
+  "l_email": "Adresse e-mail",
+  "l_phone": "Numéro de téléphone",
+  "l_plan": "Choisissez votre formule / objectif",
+  "l_msg": "Parlez-moi de vos objectifs en anglais",
+  "o_choose": "Choisissez une option",
+  "o_book": "Club de lecture (20 TND/mois)",
+  "o_student": "Plan Étudiant (40 TND/mois) - Focus Baccalauréat",
+  "o_conv": "Plan Conversation (80 TND/mois) - Focus aisance",
+  "o_pro": "Plan Professionnel (100 TND/mois) - Focus carrière",
+  "submit": "Envoyer la demande",
+  "f_phone": "Téléphone :",
+  "f_email": "E-mail :",
+  "f_insta": "Instagram :",
+  "f_visit": "Voir notre profil",
+  "copyright": "© 2026 ABC English. Tous droits réservés.",
+  "title": "ABC English | Des bases à l'aisance",
+  "by": "de",
+  "ph_msg": "J'ai besoin d'aide pour réussir mon examen / préparer des entretiens...",
+  "sending": "Envoi en cours...",
+  "success": "Merci ! ABC English vous contactera bientôt.",
+  "error": "Une erreur s'est produite. Écrivez-nous à englishabcweb@gmail.com ou contactez-nous sur Instagram."
+ },
+ "ar": {
+  "nav_programs": "البرامج",
+  "nav_about": "نبذة عنّا",
+  "nav_pricing": "الأسعار",
+  "nav_reading": "نادي القراءة",
+  "nav_faq": "الأسئلة الشائعة",
+  "nav_trial": "سجّل الآن",
+  "tagline": "من الأساسيات إلى الطلاقة",
+  "hero_h1": "أتقن اللغة الإنجليزية بثقة",
+  "hero_p": "دروس تفاعلية عبر الإنترنت مصمّمة خصيصًا للمهنيين والطلاب الطموحين.",
+  "consult": "احجز استشارة مجانية",
+  "enroll_title": "سجّل الآن",
+  "prog_title": "برامجنا التعليمية",
+  "prog_biz": "الإنجليزية للأعمال",
+  "prog_biz_p": "طوّر مسارك المهني، واجتز المقابلات، وأدر الاجتماعات بثقة من خلال تدريب متخصص في التواصل المهني.",
+  "prog_conv": "الطلاقة في المحادثة",
+  "prog_conv_p": "تحدّث بطبيعية ووضوح. تغلّب على الخوف من التحدث أمام الجمهور عبر تمارين محادثة حيوية مستوحاة من الواقع.",
+  "prog_exam": "التحضير للامتحانات المدرسية (الباكالوريا)",
+  "prog_exam_p": "منهج مرتبط بالبرامج المدرسية يركّز على قواعد اللغة والأدب وبنية المقالات والمهارات الأساسية لاجتياز الامتحانات الرسمية بنجاح.",
+  "bookclub": "نادي القراءة",
+  "prog_book_p": "اقرأ وناقش وتطوّر مع المجموعة. نمِّ مفرداتك وفهمك القرائي وثقتك في التحدث من خلال كتب إنجليزية ممتعة ونقاشات جماعية ودّية.",
+  "about_title": "تعرّف على مدرّبك",
+  "about_h3": "مرحبًا! أنا مدرّبك في اللغة الإنجليزية!",
+  "about_p1": "أحمل شهادة ماجستير في الأدب الإنجليزي من كلية الآداب بسوسة. يجمع مساري التعليمي بين الصرامة المنهجية والمرونة التواصلية، لتحقيق أهدافك الدراسية وطموحاتك المهنية معًا.",
+  "badge1": "ماجستير في الأدب الإنجليزي (سوسة)",
+  "badge2": "سنتان من الخبرة في التدريس الحضوري",
+  "badge3": "3 سنوات من التدريب الحر عبر الإنترنت",
+  "about_p2": "سواء احتجت إلى صقل عرض تقديمي لشركتك أو الحصول على علامة ممتازة في امتحان الباكالوريا، أضع لك خطة شخصية مبنية على مستواك بدقة.",
+  "price_title": "أسعار بسيطة ومناسبة",
+  "book_short": "اقرأ وناقش وتطوّر مع المجموعة",
+  "per_month": "دينار / شهر",
+  "bf1": "كتب إنجليزية ممتعة للقراءة",
+  "bf2": "نقاشات جماعية وتمارين على التحدث",
+  "bf3": "أنشطة للمفردات وفهم المقروء",
+  "bf4": "مجتمع ودّي وداعم",
+  "enroll": "سجّل الآن",
+  "student": "باقة الطالب",
+  "student_p": "مثالية للباكالوريا والتحضير المدرسي",
+  "sf1": "توافق مع المنهج المدرسي",
+  "sf2": "مراجعة القواعد والإنشاء",
+  "sf3": "تمارين تفاعلية أسبوعية",
+  "sf4": "متابعة التدريب ليوم الامتحان",
+  "conv": "باقة المحادثة",
+  "conv_p": "اكتسب الثقة في التحدث يوميًا",
+  "cf1": "مواضيع واقعية ونقاشات",
+  "cf2": "تحسين النطق واللهجة",
+  "cf3": "تمارين لتوسيع المفردات",
+  "cf4": "تدريب مباشر على التحدث فردًا لفرد",
+  "pro": "باقة المحترفين",
+  "pro_p": "للتقدّم المهني وإتقان إنجليزية الأعمال",
+  "pf1": "مصطلحات وعبارات الأعمال",
+  "pf2": "محاكاة مقابلات العمل والاجتماعات",
+  "pf3": "جداول زمنية مرنة",
+  "pf4": "تصحيح متقدم للنطق",
+  "pro_badge": "اختيار المحترفين",
+  "bc_title": "مشاريع القراءة في نادي القراءة",
+  "bc_intro": "يستمر نادي القراءة من ديسمبر حتى ماي، حيث يلتقي الأعضاء في آخر جمعة من كل شهر لمناقشة الكتاب المختار وتبادل الآراء والأفكار.",
+  "m_dec": "ديسمبر",
+  "m_jan": "جانفي",
+  "m_feb": "فيفري",
+  "m_mar": "مارس",
+  "m_apr": "أفريل",
+  "d_dec": "النقاش: الجمعة 25 ديسمبر",
+  "d_jan": "النقاش: الجمعة 29 جانفي",
+  "d_feb": "النقاش: الجمعة 26 فيفري",
+  "d_mar": "النقاش: الجمعة 26 مارس",
+  "d_apr": "النقاش: الجمعة 30 أفريل",
+  "m_may": "ماي",
+  "d_may": "النقاش: الجمعة 28 ماي",
+  "upcoming": "قريبًا",
+  "faq_title": "الأسئلة الشائعة",
+  "q1": "كيف تُقام الدروس عبر الإنترنت؟",
+  "a1": "تُقام الدروس مباشرة عبر أدوات مرئية تفاعلية (مثل Google Meet أو Zoom). ستتلقى رابط الدخول المباشر قبل كل حصة.",
+  "q2": "ما طرق الدفع المحلية التي تقبلونها؟",
+  "a2": "نقبل وسائل الدفع المحلية الشائعة في تونس، ومنها التحويل عبر تطبيق D17 والتحويل البنكي والإيداع النقدي.",
+  "q3": "هل توفرون مواد تدريبية حقيقية للباكالوريا؟",
+  "a3": "نعم. يحصل جميع طلاب مسار التحضير للامتحانات على أدلة قواعد وتحليلات نصوص منظمة ونماذج من امتحانات سابقة متوافقة مع المعايير الوطنية.",
+  "q4": "هل يمكنني تأجيل حصة إذا كنت مشغولًا؟",
+  "a4": "بالتأكيد. إذا أبلغتنا قبل 48 ساعة على الأقل، سنجد بسهولة موعدًا بديلًا ضمن الجدول الشهري.",
+  "l_name": "اسمك",
+  "l_email": "البريد الإلكتروني",
+  "l_phone": "رقم الهاتف",
+  "l_plan": "اختر باقتك / هدفك",
+  "l_msg": "حدّثني عن أهدافك في اللغة الإنجليزية",
+  "o_choose": "اختر خيارًا",
+  "o_book": "نادي القراءة (20 دينار/شهر)",
+  "o_student": "باقة الطالب (40 دينار/شهر) - التركيز على الباكالوريا",
+  "o_conv": "باقة المحادثة (80 دينار/شهر) - التركيز على الطلاقة",
+  "o_pro": "باقة المحترفين (100 دينار/شهر) - التركيز على المسار المهني",
+  "submit": "إرسال الطلب",
+  "f_phone": "الهاتف:",
+  "f_email": "البريد:",
+  "f_insta": "إنستغرام:",
+  "f_visit": "زيارة صفحتنا",
+  "copyright": "© 2026 ABC English. جميع الحقوق محفوظة.",
+  "title": "ABC English | من الأساسيات إلى الطلاقة",
+  "by": "تأليف:",
+  "ph_msg": "أحتاج إلى مساعدة لاجتياز امتحاني / الاستعداد لمقابلات العمل...",
+  "sending": "جارٍ الإرسال...",
+  "success": "شكرًا لك! سيتواصل معك ABC English قريبًا.",
+  "error": "حدث خطأ ما. راسلنا على englishabcweb@gmail.com أو تواصل معنا عبر إنستغرام."
+ }
+};
+        let currentLang = 'en';
+        function tr(key) { return (I18N[currentLang] && I18N[currentLang][key]) || I18N.en[key] || key; }
+        window.tr = tr;
+        const LANG_NAMES = { fr: 'Français', ar: 'العربية', en: 'English' };
+        window.syncSiteLang = function () {
+            const f = document.getElementById('siteLang');
+            if (f) f.value = LANG_NAMES[currentLang];
+        };
+        function setLang(lang) {
+            if (!I18N[lang]) lang = 'en';
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = tr(el.dataset.i18n); });
+            document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = tr(el.dataset.i18nPh); });
+            document.title = tr('title');
+            document.querySelectorAll('.lang-switch button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+            window.syncSiteLang();
+            try { localStorage.setItem('abc-lang', lang); } catch (e) {}
+        }
+        document.querySelectorAll('.lang-switch button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+        (function () {
+            let saved = null;
+            try { saved = localStorage.getItem('abc-lang'); } catch (e) {}
+            const fromUrl = new URLSearchParams(location.search).get('lang');
+            const start = I18N[fromUrl] ? fromUrl : (I18N[saved] ? saved : 'en');
+            if (start !== 'en') setLang(start); else window.syncSiteLang();
+        })();
+    </script>
+</body>
+</html>
